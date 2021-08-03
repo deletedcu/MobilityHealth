@@ -92,11 +92,10 @@ const style = StyleSheet.create({
   },
   textValue: {
     fontSize: 16,
-    color: '#000',
+    fontWeight: 'bold',
     marginBottom: 8,
   },
   text: {
-    color: '#000',
   }
 });
 
