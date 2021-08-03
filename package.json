@@ -1,0 +1,51 @@
+{
+  "name": "MobilityHealth",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@ovalmoney/react-native-fitness": "^0.5.3",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.5",
+    "@reduxjs/toolkit": "^1.6.1",
+    "deepmerge": "^4.2.2",
+    "i18n-js": "^3.8.0",
+    "moment": "^2.29.1",
+    "react": "17.0.1",
+    "react-native": "0.64.2",
+    "react-native-chart-kit": "^6.11.0",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-linear-gradient": "^2.5.6",
+    "react-native-localize": "^2.1.1",
+    "react-native-paper": "^4.9.2",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^3.4.0",
+    "react-native-svg": "^12.1.1",
+    "react-native-vector-icons": "^8.1.0",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/runtime": "^7.14.8",
+    "@react-native-community/eslint-config": "^3.0.0",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-devtools": "^4.14.0",
+    "react-test-renderer": "17.0.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
