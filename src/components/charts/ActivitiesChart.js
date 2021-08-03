@@ -2,21 +2,23 @@ import React from 'react';
 import {Dimensions, View, StyleSheet} from 'react-native';
 import {Title, Text} from 'react-native-paper';
 import {ProgressChart} from 'react-native-chart-kit';
+import {useTheme} from '@react-navigation/native';
 import i18n from '../../locales';
 
 const screenWidth = Dimensions.get('window').width - 16;
 const screenHeight = 220;
 
 const ActivitiesChart = ({value, details}) => {
-  console.log(value)
+  const {colors} = useTheme();
+
   const stepGoal = 10000;
   const distanceGoal = 2000;
   const caloryGoal = 630;
 
   const chartConfig = {
-    backgroundGradientFrom: '#000C59',
+    backgroundGradientFrom: colors.gradient1,
     backgroundGradientFromOpacity: 1,
-    backgroundGradientTo: '#213e8e',
+    backgroundGradientTo: colors.gradient2,
     backgroundGradientToOpacity: 1,
     color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
     strokeWidth: 2,
@@ -25,8 +27,7 @@ const ActivitiesChart = ({value, details}) => {
   };
 
   const data = {
-    labels: [i18n.t('distances'), i18n.t('calories'), i18n.t('steps')],
-    // data: [0.8, 0.6, 0.6],
+    labels: [i18n.t('steps'), i18n.t('calories'), i18n.t('distances')],
     data: [value.steps / stepGoal, value.calories / caloryGoal, value.distances / distanceGoal],
   }
   

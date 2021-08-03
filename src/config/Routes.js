@@ -25,6 +25,8 @@ const CustomTheme = {
   colors: {
     ...NavigationDefaultTheme.colors,
     primary: 'rgb(255, 45, 85)',
+    gradient1: '#000C59',
+    gradient2: '#213e8e',
   },
 };
 

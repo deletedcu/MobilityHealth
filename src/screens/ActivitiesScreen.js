@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import {ActivityIndicator, Avatar, Portal, Text, Title} from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import {useTheme} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useActivities, useLoading} from '../hooks';
 import ActivitiesChart from '../components/charts/ActivitiesChart';
@@ -10,6 +11,7 @@ import i18n from '../locales';
 import {tempSteps, tempCalories, tempDistances} from '../demo/data';
 
 const ActivitiesScreen = ({navigation}) => {
+  const {colors} = useTheme();
   const [activities, setActivities] = useState(initialActivities());
   
   const {loading, setLoadingF} = useLoading();
@@ -43,7 +45,7 @@ const ActivitiesScreen = ({navigation}) => {
       <TouchableOpacity onPress={() => handleItemClick(item)}>
         <LinearGradient 
           style={style.itemContainer}
-          colors={['#000C59', '#213e8e']}
+          colors={[colors.gradient1, colors.gradient2]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}>
           <Avatar.Icon size={40} icon='walk'/>

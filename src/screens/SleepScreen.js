@@ -4,7 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import {Portal, ActivityIndicator, Surface, Text, withTheme, Title, Avatar, Card, Divider} from 'react-native-paper';
 import { useLoading, useSleepAnalysis } from '../hooks';
 import {initialSleepAnalysis, prepareSleepAnalysis} from '../utils/FitnessUtils';
-import {getFormatStringBySubtract} from '../utils/DateUtils';
+import {getFormatStringBySubtract, getTimeStringBySeconds} from '../utils/DateUtils';
+import SleepChart from '../components/charts/SleepChart';
 import {tempSleepAnalysis} from '../demo/data';
 import i18n from '../locales';
 
@@ -63,44 +64,45 @@ const SleepScreen = (props) => {
           </View>
           <View style={style.mainContainer}>
             <Title>{getFormatStringBySubtract('dddd, MMMM D, YYYY', key)}</Title>
+            <SleepChart value={data}/>
             <View style={style.itemContainer}>
               <Card.Title
                 title={i18n.t('sleep_duration')}
                 left={(props) => <Avatar.Icon {...props} icon='clock-time-five'/>}
-                right={(props) => (<Text {...props}>{data.sleepTime}</Text>)}
+                right={(props) => (<Text {...props}>{getTimeStringBySeconds(data.sleepTime)}</Text>)}
               />
               <Divider />
               <Card.Title
                 title={data.lightPercent}
                 subtitle={i18n.t('light_sleep')}
                 left={(props) => <Avatar.Icon {...props} icon='leaf'/>}
-                right={(props) => (<Text {...props}>{data.lightTime}</Text>)}
+                right={(props) => (<Text {...props}>{getTimeStringBySeconds(data.lightTime)}</Text>)}
               />
               <Divider />
               <Card.Title
                 title={data.deepPercent}
                 subtitle={i18n.t('deep_sleep')}
                 left={(props) => <Avatar.Icon {...props} icon='power-sleep'/>}
-                right={(props) => (<Text {...props}>{data.deepTime}</Text>)}
+                right={(props) => (<Text {...props}>{getTimeStringBySeconds(data.deepTime)}</Text>)}
               />
               <Divider />
               <Card.Title
                 title={data.remPercent}
                 subtitle={i18n.t('rem_sleep')}
                 left={(props) => <Avatar.Icon {...props} icon='head-lightbulb'/>}
-                right={(props) => (<Text {...props}>{data.remTime}</Text>)}
+                right={(props) => (<Text {...props}>{getTimeStringBySeconds(data.remTime)}</Text>)}
               />
               <Divider />
               <Card.Title
                 title={i18n.t('wake_time')}
                 left={(props) => <Avatar.Icon {...props} icon='weather-sunset'/>}
-                right={(props) => (<Text {...props}>{data.wakeTime}</Text>)}
+                right={(props) => (<Text {...props}>{getTimeStringBySeconds(data.wakeTime)}</Text>)}
               />
               <Divider />
               <Card.Title
                 title={i18n.t('time_in_bed')}
                 left={(props) => <Avatar.Icon {...props} icon='bed'/>}
-                right={(props) => (<Text {...props}>{data.bedTime}</Text>)}
+                right={(props) => (<Text {...props}>{getTimeStringBySeconds(data.bedTime)}</Text>)}
               />
             </View>
           </View>

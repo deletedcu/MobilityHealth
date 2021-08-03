@@ -14,5 +14,6 @@ export default {
   deep_sleep: 'Deep Sleep',
   rem_sleep: 'REM Sleep',
   wake_time: 'Wake Time',
+  unknown: 'Unknown',
   use_demo: 'Use demo data?',
 };

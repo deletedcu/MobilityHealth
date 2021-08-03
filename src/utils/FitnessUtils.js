@@ -64,12 +64,13 @@ function getActivitiesByIndex(steps, calories, distances, index) {
 
 export const initialSleepAnalysis = () => {
   return {
-    sleepTime: DateUtils.getTimeStringBySeconds(0),
-    bedTime: DateUtils.getTimeStringBySeconds(0),
-    deepTime: DateUtils.getTimeStringBySeconds(0),
-    lightTime: DateUtils.getTimeStringBySeconds(0),
-    remTime: DateUtils.getTimeStringBySeconds(0),
-    wakeTime: DateUtils.getTimeStringBySeconds(0),
+    sleepTime: 0,
+    bedTime: 0,
+    deepTime: 0,
+    lightTime: 0,
+    remTime: 0,
+    wakeTime: 0,
+    unknownTime: 0,
     deepPercent: '0%',
     lightPercent: '0%',
     remPercent: '0%',
@@ -104,24 +105,25 @@ export const prepareSleepAnalysis = ({sleeps, index}) => {
       lightSeconds += item.duration;
     } else if (item.value === 'sleep.rem') {
       remSeconds += item.duration;
-    } else if (item.value === 'unknown') {
-      unknownSeconds += item.duration;
     } else if (item.value === 'sleep.awake') {
       wakeSeconds += item.duration;
+    } else if (item.value === 'unknown') {
+      unknownSeconds += item.duration;
     }
   })
 
   const bedSeconds = sleepSeconds - unknownSeconds;
   
   return {
-    sleepTime: DateUtils.getTimeStringBySeconds(sleepSeconds),
-    bedTime: DateUtils.getTimeStringBySeconds(bedSeconds),
-    deepTime: DateUtils.getTimeStringBySeconds(deepSeconds),
-    lightTime: DateUtils.getTimeStringBySeconds(lightSeconds),
-    remTime: DateUtils.getTimeStringBySeconds(remSeconds),
-    wakeTime: DateUtils.getTimeStringBySeconds(wakeSeconds),
-    deepPercent: sleepSeconds > 0 ? `${parseInt(deepSeconds / sleepSeconds * 100)}%` : '0%',
-    lightPercent: sleepSeconds > 0 ? `${parseInt(lightSeconds / sleepSeconds * 100)}%` : '0%',
-    remPercent: sleepSeconds > 0 ? `${parseInt(remSeconds / sleepSeconds * 100)}%` : '0%',
+    sleepTime: sleepSeconds,
+    bedTime: bedSeconds,
+    deepTime: deepSeconds,
+    lightTime: lightSeconds,
+    remTime: remSeconds,
+    wakeTime: wakeSeconds,
+    unknownTime: unknownSeconds,
+    deepPercent: sleepSeconds > 0 ? `${Math.round(deepSeconds / sleepSeconds * 100)}%` : '0%',
+    lightPercent: sleepSeconds > 0 ? `${Math.round(lightSeconds / sleepSeconds * 100)}%` : '0%',
+    remPercent: sleepSeconds > 0 ? `${Math.round(remSeconds / sleepSeconds * 100)}%` : '0%',
   };
 };

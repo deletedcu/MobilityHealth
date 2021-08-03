@@ -3,10 +3,12 @@ import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Switch, Title, Text, Avatar} from 'react-native-paper';
 import LinearGradient from 'react-native-linear-gradient';
+import { useTheme } from '@react-navigation/native';
 import i18n from '../locales';
 import {useDemo} from '../hooks';
 
 const HomeScreen = ({navigation}) => {
+  const {colors} = useTheme();
 
   const {demoAvailable, setDemoF} = useDemo();
 
@@ -24,7 +26,7 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity style={{width: '100%'}} onPress={() => navigation.push('Activities')}>
           <LinearGradient 
             style={style.itemContainer}
-            colors={['#000C59', '#213e8e']}
+            colors={[colors.gradient1, colors.gradient2]}
             start={{x: 0, y: 1}}
             end={{x: 1, y: 0}}>
             <Avatar.Icon size={40} icon='walk'/>
@@ -36,7 +38,7 @@ const HomeScreen = ({navigation}) => {
         <TouchableOpacity style={{width: '100%'}} onPress={() => navigation.push('Sleep')}>
           <LinearGradient 
             style={style.itemContainer}
-            colors={['#000C59', '#213e8e']}
+            colors={[colors.gradient1, colors.gradient2]}
             start={{x: 0, y: 1}}
             end={{x: 1, y: 0}}>
             <Avatar.Icon size={40} icon='power-sleep'/>
