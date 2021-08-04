@@ -2,13 +2,13 @@ import * as DateUtils from './DateUtils';
 
 export const initialActivities = () => {
   return {
-    day0: {day: DateUtils.getDayName(0), steps: 0, calories: 0, distances: 0},
-    day1: {day: DateUtils.getDayName(1), steps: 0, calories: 0, distances: 0},
-    day2: {day: DateUtils.getDayName(2), steps: 0, calories: 0, distances: 0},
-    day3: {day: DateUtils.getDayName(3), steps: 0, calories: 0, distances: 0},
-    day4: {day: DateUtils.getDayName(4), steps: 0, calories: 0, distances: 0},
-    day5: {day: DateUtils.getDayName(5), steps: 0, calories: 0, distances: 0},
-    day6: {day: DateUtils.getDayName(6), steps: 0, calories: 0, distances: 0},
+    day0: {day: DateUtils.getDayName(0), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 0), steps: 0, calories: 0, distances: 0},
+    day1: {day: DateUtils.getDayName(1), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 1), steps: 0, calories: 0, distances: 0},
+    day2: {day: DateUtils.getDayName(2), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 2), steps: 0, calories: 0, distances: 0},
+    day3: {day: DateUtils.getDayName(3), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 3), steps: 0, calories: 0, distances: 0},
+    day4: {day: DateUtils.getDayName(4), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 4), steps: 0, calories: 0, distances: 0},
+    day5: {day: DateUtils.getDayName(5), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 5), steps: 0, calories: 0, distances: 0},
+    day6: {day: DateUtils.getDayName(6), dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', 6), steps: 0, calories: 0, distances: 0},
   };
 };
 
@@ -56,6 +56,7 @@ function getActivitiesByIndex(steps, calories, distances, index) {
 
   return {
     day: DateUtils.getDayName(index),
+    dayString: DateUtils.getFormatStringBySubtract('dddd, MMMM D, YYYY', index),
     steps: stepsTotal,
     distances: distancesTotal,
     calories: caloriesTotal,

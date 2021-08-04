@@ -10,7 +10,6 @@ const screenHeight = 220;
 
 const SleepChart = ({value}) => {
   const {colors} = useTheme();
-  console.log(colors)
   const chartConfig = {
     backgroundGradientFrom: colors.gradient1,
     backgroundGradientFromOpacity: 1,
