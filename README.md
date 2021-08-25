@@ -2,6 +2,10 @@
 
 MobilityHealth is the test app that reads and shows the mobility health data from iOS and Android interacting with Apple HealthKit and Google Fitness API.
 
+<p align="center">
+  <img src="MobilityHealth.gif" />
+</p>
+
 ## Getting started
 
 `yarn`
