@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 
 import fitnessReducer from './reducers/fitnessReducer';
 

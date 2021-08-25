@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Dimensions, View, StyleSheet, ScrollView} from 'react-native';
-import {Title, Text} from 'react-native-paper';
+import {Title} from 'react-native-paper';
 import {LineChart} from 'react-native-chart-kit';
 import {Text as TextSVG, Svg, Rect} from 'react-native-svg';
 
@@ -26,14 +26,19 @@ const StepChart = ({steps}) => {
 
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets:[
+    datasets: [
       {
-        data:[8000, 2000, 3000, 5000, 10000, 7000],
-      }
-    ]
+        data: [8000, 2000, 3000, 5000, 10000, 7000],
+      },
+    ],
   };
 
-  const [tooltipPos, setTooltipPos] = useState({x: 0, y: 0, visible: false, value: 0});
+  const [tooltipPos, setTooltipPos] = useState({
+    x: 0,
+    y: 0,
+    visible: false,
+    value: 0,
+  });
 
   let chartWidth = data.labels.length * 40 + 50;
   if (chartWidth < screenWidth) {
@@ -48,18 +53,17 @@ const StepChart = ({steps}) => {
             <Rect
               x={tooltipPos.x - 15}
               y={tooltipPos.y + 10}
-              width='50'
-              height='30'
-              fill='black'
+              width="50"
+              height="30"
+              fill="black"
             />
             <TextSVG
               x={tooltipPos.x + 10}
               y={tooltipPos.y + 30}
-              fill='white'
-              fontSize='16'
-              fontWeight='bold'
-              textAnchor='middle'
-            >
+              fill="white"
+              fontSize="16"
+              fontWeight="bold"
+              textAnchor="middle">
               {tooltipPos.value}
             </TextSVG>
           </Svg>
@@ -71,26 +75,28 @@ const StepChart = ({steps}) => {
   };
 
   function handleDataPointClick(value) {
-    const isSamePoint = (tooltipPos.x === value.x && tooltipPos.y === value.y);
-    isSamePoint ? setTooltipPos((previousState) => {
-      return {
-        ...previousState,
-        value: value.value,
-        visible: !previousState.visible,
-      }
-    }) : setTooltipPos({
-      x: value.x,
-      y: value.y,
-      value: value.value,
-      visible: true,
-    });
+    const isSamePoint = tooltipPos.x === value.x && tooltipPos.y === value.y;
+    isSamePoint
+      ? setTooltipPos(previousState => {
+          return {
+            ...previousState,
+            value: value.value,
+            visible: !previousState.visible,
+          };
+        })
+      : setTooltipPos({
+          x: value.x,
+          y: value.y,
+          value: value.value,
+          visible: true,
+        });
   }
 
   return (
     <View style={style.container}>
       <Title style={style.title}>Today Steps</Title>
       <View style={style.chartContainer}>
-        <ScrollView horizontal style={{marginHorizontal: 8}}>
+        <ScrollView horizontal style={style.scrollContainer}>
           <LineChart
             data={data}
             width={chartWidth}
@@ -99,7 +105,7 @@ const StepChart = ({steps}) => {
             style={style.chart}
             bezier
             decorator={tooltip}
-            onDataPointClick={(data) => handleDataPointClick(data)}
+            onDataPointClick={data1 => handleDataPointClick(data1)}
           />
         </ScrollView>
       </View>
@@ -118,6 +124,9 @@ const style = StyleSheet.create({
     height: screenHeight,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  scrollContainer: {
+    marginHorizontal: 8,
   },
   chart: {
     borderRadius: 8,
@@ -153,7 +162,7 @@ const style = StyleSheet.create({
   },
   text: {
     color: '#fff',
-  }
+  },
 });
 
 export default StepChart;

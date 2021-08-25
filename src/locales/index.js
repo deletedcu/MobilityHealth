@@ -6,4 +6,4 @@ i18n.translations = {
   en,
 };
 
-export default i18n
+export default i18n;

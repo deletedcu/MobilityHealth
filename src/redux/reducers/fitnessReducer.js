@@ -12,13 +12,19 @@ const initialState = {
 
 const fitnessReducer = (state = initialState, action) => {
   const {type, payload} = action;
-  switch(type) {
+  switch (type) {
     case fitnessTypes.AUTHORIZE:
       return {...state, isAuthorized: payload};
     case fitnessTypes.LOADING:
       return {...state, loading: payload};
     case fitnessTypes.ACTIVITIES:
-      return {...state, steps: payload.steps, calories: payload.calories, distances: payload.distances, loading: false};
+      return {
+        ...state,
+        steps: payload.steps,
+        calories: payload.calories,
+        distances: payload.distances,
+        loading: false,
+      };
     case fitnessTypes.SLEEP:
       return {...state, sleeps: payload, loading: false};
     case fitnessTypes.DEMO:

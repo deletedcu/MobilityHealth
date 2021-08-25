@@ -35,53 +35,64 @@ const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 
 export default function Routes() {
   const [isThemeDark, setIsThemeDark] = useState(false);
-  
+
   let theme = isThemeDark ? CombinedDarkTheme : CombinedDefaultTheme;
 
   const toggleTheme = useCallback(() => {
     return setIsThemeDark(!isThemeDark);
   }, [isThemeDark]);
 
-  const preferences = useMemo(() => ({
-    toggleTheme,
-    isThemeDark,
-  }), [toggleTheme, isThemeDark]);
+  const preferences = useMemo(
+    () => ({
+      toggleTheme,
+      isThemeDark,
+    }),
+    [toggleTheme, isThemeDark],
+  );
 
   const navigationOptions = {
     headerStyle: {
-      backgroundColor: '#002366'
+      backgroundColor: '#002366',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
       fontWeight: 'bold',
-    }
-  }
+    },
+  };
 
   return (
     <PreferencesContext.Provider value={preferences}>
       <PaperProvider theme={theme}>
         <NavigationContainer theme={theme}>
-          <Stack.Navigator initialRouteName='Authorize'>
-            <Stack.Screen 
-              name='Authorize' 
-              component={AuthorizeScreen}
-              options={navigationOptions} />
+          <Stack.Navigator initialRouteName="Authorize">
             <Stack.Screen
-              name='Home' 
+              name="Authorize"
+              component={AuthorizeScreen}
+              options={navigationOptions}
+            />
+            <Stack.Screen
+              name="Home"
               component={HomeScreen}
-              options={navigationOptions} />
-            <Stack.Screen 
-              name='Activities' 
+              options={navigationOptions}
+            />
+            <Stack.Screen
+              name="Activities"
               component={ActivitiesScreen}
-              options={navigationOptions} />
-            <Stack.Screen 
-              name='ActivitiesDetail' 
-              component={ActivitiesDetailScreen} 
-              options={({route}) => ({...navigationOptions, title: route.params.title})}/>
-            <Stack.Screen 
-              name='Sleep' 
+              options={navigationOptions}
+            />
+            <Stack.Screen
+              name="ActivitiesDetail"
+              component={ActivitiesDetailScreen}
+              options={({route}) => ({
+                ...navigationOptions,
+                title: route.params.title,
+              })}
+            />
+            <Stack.Screen
+              name="Sleep"
               component={SleepScreen}
-              options={{...navigationOptions, title: 'Sleep Analysis'}} />
+              options={{...navigationOptions, title: 'Sleep Analysis'}}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {PieChart} from 'react-native-chart-kit';
-import { useTheme } from '@react-navigation/native';
+import {useTheme} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
 import i18n from '../../locales';
 
@@ -61,20 +61,20 @@ const SleepChart = ({value}) => {
 
   return (
     <View style={style.container}>
-      <LinearGradient 
-          style={style.chartContainer}
-          colors={[colors.gradient1, colors.gradient2]}
-          start={{x: 0, y: 1}}
-          end={{x: 1, y: 0}}>
-      <PieChart
-        data={data}
-        width={screenWidth}
-        height={screenHeight}
-        chartConfig={chartConfig}
-        accessor={'time'}
-        backgroundColor={'transparent'}
-        paddingLeft={'24'}
-      />
+      <LinearGradient
+        style={style.chartContainer}
+        colors={[colors.gradient1, colors.gradient2]}
+        start={{x: 0, y: 1}}
+        end={{x: 1, y: 0}}>
+        <PieChart
+          data={data}
+          width={screenWidth}
+          height={screenHeight}
+          chartConfig={chartConfig}
+          accessor={'time'}
+          backgroundColor={'transparent'}
+          paddingLeft={'24'}
+        />
       </LinearGradient>
     </View>
   );

@@ -28,9 +28,13 @@ const ActivitiesChart = ({value, details}) => {
 
   const data = {
     labels: [i18n.t('steps'), i18n.t('calories'), i18n.t('distances')],
-    data: [value.steps / stepGoal, value.calories / caloryGoal, value.distances / distanceGoal],
-  }
-  
+    data: [
+      value.steps / stepGoal,
+      value.calories / caloryGoal,
+      value.distances / distanceGoal,
+    ],
+  };
+
   return (
     <View style={style.container}>
       <Title style={style.title}>{i18n.t('activity')}</Title>
@@ -46,16 +50,22 @@ const ActivitiesChart = ({value, details}) => {
           hideLegend={false}
         />
       </View>
-      {details &&
+      {details && (
         <View style={style.textContainer}>
           <Text style={style.text}>{i18n.t('steps')}</Text>
-          <Text style={style.textValue}>{value.steps}/{stepGoal} {i18n.t('steps')}</Text>
+          <Text style={style.textValue}>
+            {value.steps}/{stepGoal} {i18n.t('steps')}
+          </Text>
           <Text style={style.text}>{i18n.t('calories')}</Text>
-          <Text style={style.textValue}>{value.calories}/{caloryGoal} {i18n.t('calories')}</Text>
+          <Text style={style.textValue}>
+            {value.calories}/{caloryGoal} {i18n.t('calories')}
+          </Text>
           <Text style={style.text}>{i18n.t('steps')}</Text>
-          <Text style={style.textValue}>{value.distances}/{distanceGoal} {i18n.t('distances')}</Text>
+          <Text style={style.textValue}>
+            {value.distances}/{distanceGoal} {i18n.t('distances')}
+          </Text>
         </View>
-      }
+      )}
     </View>
   );
 };
@@ -95,8 +105,7 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
   },
-  text: {
-  }
+  text: {},
 });
 
 export default ActivitiesChart;

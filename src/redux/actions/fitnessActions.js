@@ -1,6 +1,5 @@
 import * as fitnessTypes from '../types/fitnessTypes';
 import * as Fitness from '../../utils/FitnessFunctions';
-import {logMessage, logError} from '../../utils/log';
 
 export const setLoading = status => {
   return dispatch => {
@@ -34,9 +33,15 @@ export const getActivities = () => {
       steps = await Fitness.getSteps();
       calories = await Fitness.getCalories();
       distances = await Fitness.getDistances();
-      dispatch({type: fitnessTypes.ACTIVITIES, payload: {steps, calories, distances}});
+      dispatch({
+        type: fitnessTypes.ACTIVITIES,
+        payload: {steps, calories, distances},
+      });
     } catch (err) {
-      dispatch({type: fitnessTypes.ACTIVITIES, payload: {steps, calories, distances}});
+      dispatch({
+        type: fitnessTypes.ACTIVITIES,
+        payload: {steps, calories, distances},
+      });
     }
   };
 };
@@ -49,5 +54,5 @@ export const getSleepAnalysis = () => {
     } catch (err) {
       dispatch({type: fitnessTypes.SLEEP, payload: []});
     }
-  }
-}
+  };
+};

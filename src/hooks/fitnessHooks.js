@@ -1,5 +1,5 @@
 import {useSelector} from 'react-redux';
-import { useDispatchWrap } from "./utilHooks";
+import {useDispatchWrap} from './utilHooks';
 import {
   setLoading,
   setDemo,
@@ -24,10 +24,12 @@ export const useDemo = () => {
   const demoAvailable = useSelector(state => state.fitness.demoAvailable);
   const setDemoF = useDispatchWrap(setDemo);
   return {demoAvailable, setDemoF};
-}
+};
 
 export const useActivities = () => {
-  const {demoAvailable, steps, calories, distances} = useSelector(state => state.fitness);
+  const {demoAvailable, steps, calories, distances} = useSelector(
+    state => state.fitness,
+  );
   const getActivitiesF = useDispatchWrap(getActivities);
 
   return {
@@ -42,7 +44,7 @@ export const useActivities = () => {
 export const useSleepAnalysis = () => {
   const {demoAvailable, sleeps} = useSelector(state => state.fitness);
   const getSleepAnalysisF = useDispatchWrap(getSleepAnalysis);
-  
+
   return {
     demoAvailable,
     sleeps,
